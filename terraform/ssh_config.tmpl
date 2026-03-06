@@ -1,0 +1,24 @@
+# Rampart host configuration
+Host rampart
+    HostName ${rampart_ip}
+    User debian
+
+# Watchtower host configuration
+Host watchtower
+    HostName ${watchtower_ip}
+    User debian
+
+# Arena host configuration
+Host arena
+    HostName ${arena_ip}
+    User debian
+
+# Target hosts configuration
+%{ for host in hosts ~}
+Host ${host.name}
+    HostName ${host.ip}
+    User debian
+    ProxyJump rampart
+
+%{ endfor ~}
+
