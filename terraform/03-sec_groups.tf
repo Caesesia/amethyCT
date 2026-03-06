@@ -175,7 +175,7 @@ resource "openstack_networking_secgroup_rule_v2" "icmp-arena" {
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "icmp"
-  remote_ip_prefix  = "10.0.0.0/0"
+  remote_ip_prefix  = "10.0.0.0/24"
   security_group_id = "${openstack_networking_secgroup_v2.arena_sec_group.id}"
 }
 
