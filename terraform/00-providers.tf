@@ -10,7 +10,7 @@ terraform {
 
 # Configure the OpenStack Provider
 variable "openstack_rc" {
-  default = "PCP-A9ZS8GV-dc4-a"
+  default = "lab2"
 }
 
 provider "openstack" {
