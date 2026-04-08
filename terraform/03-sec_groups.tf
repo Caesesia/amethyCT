@@ -17,8 +17,8 @@ resource "openstack_networking_secgroup_rule_v2" "ssh-rampart-home" {
   security_group_id = "${openstack_networking_secgroup_v2.rampart_sec_group.id}"
 }
 
-# Allow SSH from IK
-resource "openstack_networking_secgroup_rule_v2" "ssh-rampart-ik" {
+# Allow SSH from IK internal
+resource "openstack_networking_secgroup_rule_v2" "ssh-rampart-ik-internal" {
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "tcp"
