@@ -1,0 +1,24 @@
+---
+- name: Basic instance setup
+  hosts: rampart
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update local index
+      ansible.builtin.command: "apt update"
+
+    - name: Install packages
+      ansible.builtin.apt:
+        name: {{ item }}
+        state: present
+        loop:
+          - vim
+          - fail2ban
+
+
+
+- name: Configure fail2ban
+  hosts: rampart
+  gather_facts: false
+  tasks:

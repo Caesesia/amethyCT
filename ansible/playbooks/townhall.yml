@@ -1,0 +1,18 @@
+---
+- name: Basic instance setup
+  hosts: rampart
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update local package index
+      ansible.builtin.command: "apt update"
+
+    - name: Upgrade packages
+      ansible.builtin.command: "apt upgrade -y"
+
+    - name: Install packages
+      ansible.builtin.apt:
+        pkg:
+          - vim
+          - 

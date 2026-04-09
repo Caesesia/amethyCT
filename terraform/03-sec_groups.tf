@@ -118,6 +118,28 @@ resource "openstack_networking_secgroup_rule_v2" "icmp-town-hall" {
   security_group_id = "${openstack_networking_secgroup_v2.town-hall_sec_group.id}"
 }
 
+# Allow 7881
+resource "openstack_networking_secgroup_rule_v2" "7881-town-hall" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 7881
+  port_range_max    = 7881
+  remote_ip_prefix  = "10.0.0.0/24"
+  security_group_id = "${openstack_networking_secgroup_v2.town-hall_sec_group.id}"
+}
+
+# Allow 50000-50100
+resource "openstack_networking_secgroup_rule_v2" "big-range-town-hall" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "udp"
+  port_range_min    = 50000
+  port_range_max    = 50100
+  remote_ip_prefix  = "10.0.0.0/24"
+  security_group_id = "${openstack_networking_secgroup_v2.town-hall_sec_group.id}"
+}
+
 ############################################
 # Create Security Group For arena instance #
 ############################################
