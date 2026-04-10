@@ -119,7 +119,7 @@ resource "openstack_networking_secgroup_rule_v2" "icmp-town-hall" {
 }
 
 # Allow 7881
-resource "openstack_networking_secgroup_rule_v2" "7881-town-hall" {
+resource "openstack_networking_secgroup_rule_v2" "town-hall-7881" {
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "tcp"
