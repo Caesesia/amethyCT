@@ -1,6 +1,6 @@
 ---
 - name: Basic instance setup
-  hosts: rampart
+  hosts: town-hall
   become: true
   gather_facts: false
 
@@ -15,4 +15,23 @@
       ansible.builtin.apt:
         pkg:
           - vim
-          - 
+
+    - name: 
+
+- name: Install required dependencies
+  hosts: town-hall
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Install basic dependencies
+      ansible.builtin.apt:
+        pkg:
+          - ca-certificates
+          - curl
+          - git
+          - micro
+
+    - name: Config keyring
+      ansible.builtin.command: "isntall -m 0755 /etc/apt/keyrings"
+

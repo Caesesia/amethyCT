@@ -10,9 +10,7 @@
 
     - name: Install packages
       ansible.builtin.apt:
-        name: {{ item }}
-        state: present
-        loop:
+        pkg:
           - vim
           - fail2ban
 
