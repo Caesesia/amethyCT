@@ -50,17 +50,6 @@ resource "openstack_networking_secgroup_rule_v2" "https-rampart" {
   security_group_id = "${openstack_networking_secgroup_v2.rampart_sec_group.id}"
 }
 
-# Allow 25565
-resource "openstack_networking_secgroup_rule_v2" "rampart_25565" {
-  direction         = "ingress"
-  ethertype         = "IPv4"
-  protocol          = "tcp"
-  port_range_min    = 25565
-  port_range_max    = 25565
-  remote_ip_prefix  = "82.66.247.210/32"
-  security_group_id = "${openstack_networking_secgroup_v2.rampart_sec_group.id}"
-}
-
 # Allow icmp from home
 resource "openstack_networking_secgroup_rule_v2" "icmp-rampart-home" {
   direction         = "ingress"
