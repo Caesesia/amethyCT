@@ -13,6 +13,8 @@
         pkg:
           - vim
           - fail2ban
+          - mtr
+        state: present
 
 
 
