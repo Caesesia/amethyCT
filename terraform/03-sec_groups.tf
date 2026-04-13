@@ -137,17 +137,6 @@ resource "openstack_networking_secgroup_v2" "arena_sec_group" {
   description = "Security group for the arena instances"
 }
 
-# Allow port 22 from LAN
-resource "openstack_networking_secgroup_rule_v2" "ssh-arena-lan" {
-  direction         = "ingress"
-  ethertype         = "IPv4"
-  protocol          = "tcp"
-  port_range_min    = 22
-  port_range_max    = 22
-  remote_ip_prefix  = "10.0.0.1/32"
-  security_group_id = "${openstack_networking_secgroup_v2.arena_sec_group.id}"
-}
-
 # Allow port 22 from home
 resource "openstack_networking_secgroup_rule_v2" "ssh-arena-home" {
   direction         = "ingress"
@@ -167,17 +156,6 @@ resource "openstack_networking_secgroup_rule_v2" "ssh-arena-ik" {
   port_range_min    = 22
   port_range_max    = 22
   remote_ip_prefix  = "84.16.66.35/32"
-  security_group_id = "${openstack_networking_secgroup_v2.arena_sec_group.id}"
-}
-
-# Allow 25565
-resource "openstack_networking_secgroup_rule_v2" "arena_25565" {
-  direction         = "ingress"
-  ethertype         = "IPv4"
-  protocol          = "tcp"
-  port_range_min    = 25565
-  port_range_max    = 25565
-  remote_ip_prefix  = "10.0.0.1/32"
   security_group_id = "${openstack_networking_secgroup_v2.arena_sec_group.id}"
 }
 
