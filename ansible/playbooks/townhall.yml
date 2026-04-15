@@ -49,3 +49,8 @@
           - docker-compose-plugin
         state: present
         update_cache: yes
+
+    - name: Clone Stoat repository
+      ansible.builtin.git:
+        repo: https://github.com/stoatchat/self-hosted
+        dest: /home/debian/stoat
